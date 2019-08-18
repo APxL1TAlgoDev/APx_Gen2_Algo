@@ -15,15 +15,15 @@ void algo_top( hls::stream<axiword> link_in[N_INPUT_LINKS],
 
 
 	// Algo passthrough (for testing)
-	for (size_t i = 0; i < N_WORDS_PER_FRAME; i++) {
+	for (int i = 0; i < N_WORDS_PER_FRAME; i++) {
 		axiword r[N_INPUT_LINKS];
 
 		// Read all inputs
-		for (size_t l = 0; l < N_INPUT_LINKS; l++)
+		for (int l = 0; l < N_INPUT_LINKS; l++)
 			r[l] = link_in[l].read();
 
 		// Write inputs to outputs
-		for (size_t l = 0; l < N_OUTPUT_LINKS; l++) {
+		for (int l = 0; l < N_OUTPUT_LINKS; l++) {
 			if (l >= N_INPUT_LINKS) {
 				link_out[l].write(r[N_INPUT_LINKS-1]);
 			} else {
